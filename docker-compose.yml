@@ -1,0 +1,13 @@
+services:
+  db-facturacion:
+    container_name: db-facturacion
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: facturacion
+      POSTGRES_USER: usuario_facturacion
+      POSTGRES_PASSWORD: contrasena_facturacion
+    ports:
+      - "5431:5432"
+    expose:
+      - "5431"

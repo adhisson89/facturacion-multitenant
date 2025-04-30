@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -34,31 +33,31 @@ public class CustomerController {
         return createUC.create(cmd);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{identificationNumber}")
     public Customer update(
-            @PathVariable UUID id,
+            @PathVariable String identificationNumber,
             @RequestBody UpdateCustomerCommand cmd
     ) {
-        return updateUC.update(id, cmd);
+        return updateUC.update(identificationNumber, cmd);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{identificationNumber}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable UUID id) {
-        deleteUC.delete(id);
+    public void delete(@PathVariable String identificationNumber) {
+        deleteUC.delete(identificationNumber);
     }
 
-    @PostMapping("/{id}/addresses")
+    @PostMapping("/{identificationNumber}/addresses")
     @ResponseStatus(HttpStatus.CREATED)
     public void addAddress(
-            @PathVariable UUID id,
+            @PathVariable String identificationNumber,
             @RequestBody Address address
     ) {
-        addAddrUC.addAddress(id, address);
+        addAddrUC.addAddress(identificationNumber, address);
     }
 
-    @GetMapping("/{id}/addresses")
-    public List<Address> listAddresses(@PathVariable UUID id) {
-        return listAddrUC.listAddresses(id);
+    @GetMapping("/{identificationNumber}/addresses")
+    public List<Address> listAddresses(@PathVariable String identificationNumber) {
+        return listAddrUC.listAddresses(identificationNumber);
     }
 }

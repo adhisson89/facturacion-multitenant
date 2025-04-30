@@ -6,5 +6,5 @@ import com.adhissoncedeno.sistemafacturacion.domain.port.in.command.UpdateCustom
 import java.util.UUID;
 
 public interface UpdateCustomerUseCase {
-    Customer update(UUID id, UpdateCustomerCommand command);
+    Customer update(String customerIdentificationNumber, UpdateCustomerCommand command);
 }

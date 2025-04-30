@@ -6,10 +6,10 @@ import com.adhissoncedeno.sistemafacturacion.infrastructure.persistence.mapper.C
 import com.adhissoncedeno.sistemafacturacion.infrastructure.persistence.repository.SpringDataCustomerEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -18,19 +18,16 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private final CustomerMapper mapper;
 
     @Override
+    @Transactional
     public Customer save(Customer customer) {
         var entity = mapper.toEntity(customer);
+        entity.getAddresses().forEach(addr -> addr.setCustomer(entity));
         var saved = repo.save(entity);
         return mapper.toDomain(saved);
     }
 
     @Override
-    public Optional<Customer> findById(UUID id) {
-        return repo.findById(id)
-                .map(mapper::toDomain);
-    }
-
-    @Override
+    @Transactional(readOnly = true)
     public List<Customer> findByIdentificationNumberOrName(String criteria) {
         return repo.searchByTaxOrName(criteria).stream()
                 .map(mapper::toDomain)
@@ -38,7 +35,21 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void deleteById(UUID id) {
-        repo.deleteById(id);
+    @Transactional(readOnly = true)
+    public Optional<Customer> findByIdentificationNumber(String identificationNumber) {
+        return repo.findByIdentificationNumber(identificationNumber)
+                   .map(mapper::toDomain);
+    }
+
+    @Override
+    @Transactional
+    public void deleteByIdentificationNumber(String identificationNumber) {
+        repo.deleteByIdentificationNumber(identificationNumber);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existsByIdentificationNumber(String identificationNumber) {
+        return repo.existsByIdentificationNumber(identificationNumber);
     }
 }

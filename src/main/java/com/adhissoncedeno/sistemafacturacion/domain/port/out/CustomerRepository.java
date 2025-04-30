@@ -4,11 +4,12 @@ import com.adhissoncedeno.sistemafacturacion.domain.model.Customer;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface CustomerRepository {
     Customer save(Customer customer);
-    Optional<Customer> findById(UUID id);
     List<Customer> findByIdentificationNumberOrName(String criteria);
-    void deleteById(UUID id);
+    Optional<Customer> findByIdentificationNumber(String identificationNumber);
+    void deleteByIdentificationNumber(String identificationNumber);
+    boolean existsByIdentificationNumber(String identificationNumber);
+
 }

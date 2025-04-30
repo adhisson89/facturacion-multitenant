@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ListAddressesUseCase {
-    List<Address> listAddresses(UUID customerId);
+    List<Address> listAddresses(String customerIdentificationNumber);
 }

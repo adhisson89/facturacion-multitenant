@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -72,25 +71,35 @@ public class CustomerService implements
     @Override
     @Transactional
     public Customer update(String identificationNumber, UpdateCustomerCommand cmd) {
+
         Customer existing = customerRepo.findByIdentificationNumber(identificationNumber)
                 .orElseThrow(() -> new CustomerNotFoundException(identificationNumber));
 
-        if (!identificationNumber.equals(cmd.identificationNumber()) &&
-                customerRepo.existsByIdentificationNumber(cmd.identificationNumber())) {
-            throw new DuplicateCustomerException(cmd.identificationNumber());
+
+        String newIdentificationNumber = cmd.identificationNumber() != null && !cmd.identificationNumber().equals(identificationNumber)
+                ? cmd.identificationNumber()
+                : identificationNumber;
+
+        if (!newIdentificationNumber.equals(identificationNumber)) {
+            if (customerRepo.existsByIdentificationNumber(newIdentificationNumber)) {
+                throw new DuplicateCustomerException(newIdentificationNumber);
+            }
         }
 
-        var updated = new Customer(
+
+        Customer updatedCustomer = new Customer(
                 existing.id(),
-                cmd.idType(),
-                cmd.identificationNumber(),
-                cmd.name(),
-                cmd.email(),
-                cmd.phone(),
+                cmd.idType() != null ? cmd.idType() : existing.idType(),
+                newIdentificationNumber,
+                cmd.name() != null ? cmd.name() : existing.name(),
+                cmd.email() != null ? cmd.email() : existing.email(),
+                cmd.phone() != null ? cmd.phone() : existing.phone(),
                 existing.addresses()
         );
-        return customerRepo.save(updated);
+
+        return customerRepo.save(updatedCustomer);
     }
+
 
     @Override
     @Transactional

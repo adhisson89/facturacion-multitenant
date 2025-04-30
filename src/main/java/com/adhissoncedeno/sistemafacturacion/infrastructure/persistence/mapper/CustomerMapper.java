@@ -21,7 +21,7 @@ public class CustomerMapper {
                 ))
                 .collect(Collectors.toList());
         return new Customer(
-                e.getId(), e.getIdType(), e.getTaxNumber(),
+                e.getId(), e.getIdType(), e.getIdentificationNumber(),
                 e.getName(), e.getEmail(), e.getPhone(), addrs
         );
     }
@@ -30,7 +30,7 @@ public class CustomerMapper {
         var entity = CustomerEntity.builder()
                 .id(c.id())
                 .idType(c.idType())
-                .taxNumber(c.identificationNumber())
+                .identificationNumber(c.identificationNumber())
                 .name(c.name())
                 .email(c.email())
                 .phone(c.phone())

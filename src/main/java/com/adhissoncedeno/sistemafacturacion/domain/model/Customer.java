@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public record Customer(
         UUID id,
-        String idType,      // "RUC" or "ID"
+        String idType,      
         String identificationNumber,
         String name,
         String email,

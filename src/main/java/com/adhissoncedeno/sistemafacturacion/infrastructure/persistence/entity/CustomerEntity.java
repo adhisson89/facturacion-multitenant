@@ -15,8 +15,10 @@ public class CustomerEntity {
     @Id
     @GeneratedValue
     private UUID id;
+    @Column(name = "id_type")
     private String idType;
-    private String taxNumber;
+    @Column(name = "identification_Number")
+    private String identificationNumber;
     private String name;
     private String email;
     private String phone;

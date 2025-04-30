@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: tenant-1-create-customer
+      author: adhisson
+      changes:
+        - createTable:
+            tableName: customer
+            columns:
+              - column: { name: id, type: uuid, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: id_type, type: varchar(50), constraints: { nullable: false } }
+              - column: { name: identification_number, type: varchar(50), constraints: { nullable: false, unique: true } }
+              - column: { name: name, type: varchar(255), constraints: { nullable: false } }
+              - column: { name: email, type: varchar(255) }
+              - column: { name: phone, type: varchar(50) }
+  - changeSet:
+      id: tenant-2-create-address
+      author: adhisson
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column: { name: id, type: uuid, constraints: { primaryKey: true, nullable: false } }
+              - column: { name: customer_id, type: uuid, constraints: { nullable: false, foreignKeyName: fk_address_customer, references: customer(id) } }
+              - column: { name: province, type: varchar(100), constraints: { nullable: false } }
+              - column: { name: city, type: varchar(100), constraints: { nullable: false } }
+              - column: { name: street, type: varchar(255), constraints: { nullable: false } }
+              - column: { name: is_primary, type: boolean, defaultValueBoolean: false, constraints: { nullable: false } }

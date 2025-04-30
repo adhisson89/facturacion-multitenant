@@ -7,6 +7,9 @@ import com.adhissoncedeno.sistemafacturacion.domain.port.in.*;
 import com.adhissoncedeno.sistemafacturacion.domain.port.in.command.CreateCustomerCommand;
 import com.adhissoncedeno.sistemafacturacion.domain.port.in.command.UpdateCustomerCommand;
 import com.adhissoncedeno.sistemafacturacion.domain.port.out.CustomerRepository;
+import com.adhissoncedeno.sistemafacturacion.infrastructure.config.tenant.TenantContextHolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,7 @@ public class CustomerService implements
         ListAddressesUseCase {
 
     private final CustomerRepository customerRepo;
+    private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
 
     @Override
     public List<Customer> list(String criteria) {
@@ -32,6 +36,9 @@ public class CustomerService implements
 
     @Override
     public Customer create(CreateCustomerCommand cmd) {
+
+        String currentTenant = TenantContextHolder.getTenantId();
+        log.info("Creating customer in tenant schema: {}", currentTenant);
 
         boolean exists = customerRepo.findByIdentificationNumberOrName(cmd.identificationNumber()).stream()
                 .anyMatch(c -> c.identificationNumber().equals(cmd.identificationNumber()));
@@ -65,14 +72,14 @@ public class CustomerService implements
         var existing = customerRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
         // ensure no duplicate identificationNumber
-        customerRepo.findByIdentificationNumberOrName(cmd.taxNumber()).stream()
-                .filter(c -> !c.id().equals(id) && c.identificationNumber().equals(cmd.taxNumber()))
+        customerRepo.findByIdentificationNumberOrName(cmd.identificationNumber()).stream()
+                .filter(c -> !c.id().equals(id) && c.identificationNumber().equals(cmd.identificationNumber()))
                 .findAny()
                 .ifPresent(c -> { throw new IllegalStateException("Identification number in use"); });
         var updated = new Customer(
                 id,
                 cmd.idType(),
-                cmd.taxNumber(),
+                cmd.identificationNumber(),
                 cmd.name(),
                 cmd.email(),
                 cmd.phone(),

@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "020c8755-dbfa-4a5e-bee2-982cd69276a6",
+		"name": "Test-Multitenant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29891196",
+		"_collection_link": "https://warped-astronaut-355808.postman.co/workspace/My-Workspace~2b00f233-d1ba-447f-88c0-304da8a021e5/collection/29891196-020c8755-dbfa-4a5e-bee2-982cd69276a6?action=share&source=collection_link&creator=29891196"
+	},
+	"item": [
+		{
+			"name": "Empresa A",
+			"item": [
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Tenant-Schema",
+								"value": "company_a",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Listar Clientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/customers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Apr 2025 23:35:41 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"c74b7bb1-fb4d-4b26-a9ec-2bd7a4232139\",\n        \"idType\": \"RUC\",\n        \"identificationNumber\": \"1746044041\",\n        \"name\": \"Jana Zboncak\",\n        \"email\": \"Tony.Auer@yahoo.com\",\n        \"phone\": \"242-978-9451\",\n        \"addresses\": [\n            {\n                \"id\": \"f01e175c-e32d-4aee-8695-4f788ba6b4ad\",\n                \"province\": \"Savannahfort\",\n                \"city\": \"Lake Fayebury\",\n                \"street\": \"74829 Sophia Heights\",\n                \"primary\": true\n            }\n        ]\n    },\n    {\n        \"id\": \"70602f71-1947-4b1f-bada-01d9797b1b1f\",\n        \"idType\": \"RUC\",\n        \"identificationNumber\": \"1746043817\",\n        \"name\": \"Sonya Anderson\",\n        \"email\": \"Monica97@gmail.com\",\n        \"phone\": \"0987654321\",\n        \"addresses\": [\n            {\n                \"id\": \"3446ec3c-08f9-4d5b-9089-4dfa5c995e33\",\n                \"province\": \"Bellflower\",\n                \"city\": \"Boehmberg\",\n                \"street\": \"8601 Romaguera Land\",\n                \"primary\": false\n            }\n        ]\n    },\n    {\n        \"id\": \"181a8292-5f03-4430-b95d-a675a5601189\",\n        \"idType\": \"RUC\",\n        \"identificationNumber\": \"1746056133\",\n        \"name\": \"Dean Bruen\",\n        \"email\": \"Jesus_Dare@yahoo.com\",\n        \"phone\": \"489-227-6073\",\n        \"addresses\": [\n            {\n                \"id\": \"98d4270c-fc86-4d93-b07b-58afbb9b7252\",\n                \"province\": \"West Scottyborough\",\n                \"city\": \"Nikolausborough\",\n                \"street\": \"1132 Kennedy Freeway\",\n                \"primary\": true\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Listar Direcciones Cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Tenant-Schema",
+								"value": "company_a",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/customers/1746043817/addresses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1746043817",
+								"addresses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Listar Direcciones Cliente",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/customers/1746043817/addresses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1746043817",
+										"addresses"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Apr 2025 23:45:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"3446ec3c-08f9-4d5b-9089-4dfa5c995e33\",\n        \"province\": \"Bellflower\",\n        \"city\": \"Boehmberg\",\n        \"street\": \"8601 Romaguera Land\",\n        \"primary\": false\n    },\n    {\n        \"id\": \"3ee44465-0dd0-460b-8e8d-7c15ac8be4d1\",\n        \"province\": \"Guayas\",\n        \"city\": \"Guayaquil\",\n        \"street\": \"Malecón 500\",\n        \"primary\": true\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Nuevo Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Tenant-Schema",
+								"value": "company_a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"identificationType\": \"RUC\",\n    \"identificationNumber\": \"{{$timestamp}}\",\n    \"name\": \"{{$randomFullName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"primaryAddress\": {\n        \"province\": \"{{$randomCity}}\",\n        \"city\": \"{{$randomCity}}\",\n        \"street\": \"{{$randomStreetAddress}}\",\n        \"primary\": {{$randomBoolean}}\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Nuevo Cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identificationType\": \"RUC\",\n    \"identificationNumber\": \"{{$timestamp}}\",\n    \"name\": \"{{$randomFullName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"primaryAddress\": {\n        \"province\": \"{{$randomCity}}\",\n        \"city\": \"{{$randomCity}}\",\n        \"street\": \"{{$randomStreetAddress}}\",\n        \"primary\": {{$randomBoolean}}\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/customers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Apr 2025 23:35:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"181a8292-5f03-4430-b95d-a675a5601189\",\n    \"idType\": \"RUC\",\n    \"identificationNumber\": \"1746056133\",\n    \"name\": \"Dean Bruen\",\n    \"email\": \"Jesus_Dare@yahoo.com\",\n    \"phone\": \"489-227-6073\",\n    \"addresses\": [\n        {\n            \"id\": \"98d4270c-fc86-4d93-b07b-58afbb9b7252\",\n            \"province\": \"West Scottyborough\",\n            \"city\": \"Nikolausborough\",\n            \"street\": \"1132 Kennedy Freeway\",\n            \"primary\": true\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Modificar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Tenant-Schema",
+								"value": "company_a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"0987654321\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customers/1746043817",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1746043817"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modificar Cliente",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0987654321\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/customers/1746043817",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1746043817"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Apr 2025 23:34:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"70602f71-1947-4b1f-bada-01d9797b1b1f\",\n    \"idType\": \"RUC\",\n    \"identificationNumber\": \"1746043817\",\n    \"name\": \"Sonya Anderson\",\n    \"email\": \"Monica97@gmail.com\",\n    \"phone\": \"0987654321\",\n    \"addresses\": [\n        {\n            \"id\": \"3446ec3c-08f9-4d5b-9089-4dfa5c995e33\",\n            \"province\": \"Bellflower\",\n            \"city\": \"Boehmberg\",\n            \"street\": \"8601 Romaguera Land\",\n            \"primary\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Tenant-Schema",
+								"value": "company_a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"0987654321\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customers/1746056133",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1746056133"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Modificar Cliente",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0987654321\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/customers/1746043817",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1746043817"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Apr 2025 23:34:55 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"70602f71-1947-4b1f-bada-01d9797b1b1f\",\n    \"idType\": \"RUC\",\n    \"identificationNumber\": \"1746043817\",\n    \"name\": \"Sonya Anderson\",\n    \"email\": \"Monica97@gmail.com\",\n    \"phone\": \"0987654321\",\n    \"addresses\": [\n        {\n            \"id\": \"3446ec3c-08f9-4d5b-9089-4dfa5c995e33\",\n            \"province\": \"Bellflower\",\n            \"city\": \"Boehmberg\",\n            \"street\": \"8601 Romaguera Land\",\n            \"primary\": false\n        }\n    ]\n}"
+						},
+						{
+							"name": "Eliminar Cliente",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0987654321\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/customers/1746056133",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1746056133"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 01 May 2025 00:00:19 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Añadir Dirección al Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Tenant-Schema",
+								"value": "company_a",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"province\": \"Guayas\",\n    \"city\": \"Guayaquil\",\n    \"street\": \"Malecón 500\",\n    \"primary\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/customers/1746043817/addresses",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1746043817",
+								"addresses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Añadir Dirección al Cliente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant-Schema",
+										"value": "company_a",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"province\": \"Guayas\",\n    \"city\": \"Guayaquil\",\n    \"street\": \"Malecón 500\",\n    \"primary\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/customers/1746043817/addresses",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1746043817",
+										"addresses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Apr 2025 23:41:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crear Tenant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Company C\",\n    \"schema\": \"company_c\",\n    \"active\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/tenants",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"tenants"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Tenant",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Company C\",\n    \"schema\": \"company_c\",\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tenants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tenants"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 30 Apr 2025 23:43:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"schema\": \"company_c\",\n    \"id\": \"c2e123ef-013d-45f0-a990-8ff23ccb6ffc\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar Tenants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/tenants",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"tenants"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar Tenants",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tenants",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tenants"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 30 Apr 2025 23:42:59 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"a1ff35da-861b-4f94-bd84-d73aa433cca7\",\n        \"name\": \"Company A\",\n        \"schema\": \"company_a\",\n        \"active\": true\n    },\n    {\n        \"id\": \"ea23c030-1210-4acc-89a1-04b250bdb9e6\",\n        \"name\": \"Company B\",\n        \"schema\": \"company_b\",\n        \"active\": true\n    }\n]"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8083",
+			"type": "string"
+		}
+	]
+}

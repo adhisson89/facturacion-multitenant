@@ -44,7 +44,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     @Transactional
     public void deleteByIdentificationNumber(String identificationNumber) {
-        repo.deleteByIdentificationNumber(identificationNumber);
+        repo.findByIdentificationNumber(identificationNumber).ifPresent(customerEntity -> {
+            repo.delete(customerEntity);
+        });
     }
 
     @Override
